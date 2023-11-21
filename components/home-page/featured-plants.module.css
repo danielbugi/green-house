@@ -1,0 +1,39 @@
+.container {
+  min-height: 80vh;
+  width: 100vw;
+}
+
+.sectionCenter {
+  width: 70vw;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+.featuredHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.featuredHeader h3 {
+  font-size: 2.5rem;
+}
+
+.newPlants {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media screen and (max-width: 680px) {
+  .sectionCenter {
+    width: 90vw;
+  }
+  .newPlants {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .featuredHeader h3 {
+    font-size: 2rem;
+  }
+}

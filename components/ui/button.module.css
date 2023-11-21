@@ -1,0 +1,18 @@
+.button {
+  padding: 1rem 2rem;
+  display: inline;
+}
+
+.buttonWhite {
+  background: white;
+  color: black;
+}
+.buttonWhite {
+  background: white;
+  color: black;
+}
+
+.buttonGreen {
+  color: white;
+  background: #0b9322;
+}

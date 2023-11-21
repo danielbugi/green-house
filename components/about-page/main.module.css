@@ -1,0 +1,26 @@
+.container {
+  min-height: 50vh;
+  width: 100vw;
+  padding: 10rem 0;
+}
+
+.sectionCenter {
+  width: 60vw;
+  margin: 0 auto;
+}
+.sectionCenter h1 {
+  margin-bottom: 4rem;
+}
+
+.content {
+  width: 60%;
+}
+
+.content h4 {
+  margin-bottom: 2rem;
+}
+
+.iframe {
+  margin-top: 5rem;
+  aspect-ratio: 16/9;
+}

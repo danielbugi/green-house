@@ -1,0 +1,77 @@
+.container {
+  width: 100vw;
+  padding-bottom: 6rem;
+}
+
+.sectionCenter {
+  width: 60vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.6fr 1fr;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 4rem;
+}
+.contentParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 4rem;
+}
+.contentParagraphs p {
+  font-weight: 300;
+  line-height: 1.5rem;
+}
+
+.content article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 4rem;
+}
+
+.content article svg {
+  color: rgb(198, 222, 193);
+  font-size: 1.8rem;
+}
+
+.content article > p {
+  font-weight: bold;
+  line-height: 1.5rem;
+  font-size: 18px;
+}
+
+.personContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.personImgContainer {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+}
+.personImgContainer img {
+  height: 100%;
+  width: 100%;
+}
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.personInfo p {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.personInfo span {
+  font-size: 14px;
+  color: grey;
+}
