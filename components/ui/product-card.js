@@ -4,9 +4,14 @@ import Link from 'next/link';
 import { FaShoppingBag } from 'react-icons/fa';
 
 const ProductCard = ({ product }) => {
-  const { name, category, img, price } = product;
+  const { name, category, img, price, _id } = product;
+
+  const slug = name.split(' ').join('-');
+
+  const linkPath = `/shop/${slug}`;
+
   return (
-    <article className={classes.container}>
+    <article className={classes.container} key={_id}>
       <div className={classes.addCartButton}>
         <FaShoppingBag />
       </div>
@@ -14,7 +19,7 @@ const ProductCard = ({ product }) => {
         <p>Add to cart</p>
       </div>
 
-      <Link href={'/'}>
+      <Link href={linkPath}>
         <div className={classes.imgContainer}>
           <Image src={img} alt={name} height={600} width={400} />
         </div>

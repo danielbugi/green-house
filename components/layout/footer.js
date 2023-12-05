@@ -3,6 +3,7 @@ import classes from './footer.module.css';
 
 import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 import { useEffect, useRef, useState } from 'react';
+import Loader from '../ui/loader';
 
 const Footer = () => {
   const [isInputClicked, setIsInputClicked] = useState(false);
@@ -112,9 +113,7 @@ const Footer = () => {
                   Please enter valid email address.*
                 </span>
               </label>
-              <button type="submit">
-                Subscribe {loading && <div className={classes.loader}></div>}
-              </button>
+              <button type="submit">Subscribe {loading && <Loader />}</button>
             </form>
           )}
         </div>

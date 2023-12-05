@@ -3,6 +3,7 @@ import classes from './sidebar.module.css';
 
 import { FaShoppingBag, FaUser } from 'react-icons/fa';
 import Link from 'next/link';
+import CartButton from '../ui/cart-button';
 
 const Sidebar = () => {
   const { sidebarOpen } = useSidebarContext();
@@ -13,19 +14,20 @@ const Sidebar = () => {
 
   return (
     <aside className={sidebarClasses}>
-      <Link className="logo" href={'/'}>
+      {/* <Link className="logo" href={'/'}>
         <h3>GreenHouse</h3>
-      </Link>
+      </Link> */}
 
       <ul>
         <div className={classes.navControls}>
           <li>
-            <a href="/">
+            {/* <a href="/">
               <span>$0.00</span>
               <span>
                 <FaShoppingBag />
               </span>
-            </a>
+            </a> */}
+            <CartButton />
           </li>
           <li>
             <a href="/">

@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.formControl label {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: rgb(85, 85, 85);
+}
+
+.formControl label span {
+  color: rgb(199, 22, 22);
+}
+
+.container input {
+  padding: 0.8rem;
+  font-size: 16px;
+  border: 1px solid rgba(8, 8, 8, 0.144);
+}
+
+.container textarea {
+  padding: 0.8rem;
+  font-size: 16px;
+  border: 1px solid rgba(8, 8, 8, 0.144);
+  resize: none;
+}
+
+.container button {
+  padding: 1rem 2rem;
+  display: inline;
+  color: white;
+  background: #0b9322;
+  border: none;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background: grey;
+}

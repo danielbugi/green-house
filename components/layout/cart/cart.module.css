@@ -1,0 +1,88 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 35%;
+  background: white;
+  border-left: 1px solid rgb(213, 213, 213);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s ease-in-out;
+}
+
+.container.hide {
+  right: -100%;
+}
+
+.backgroundCart {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(68, 68, 68, 0.537);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 998;
+  transition: 0.3s ease-in-out;
+  opacity: 1;
+}
+.backgroundCart.hide {
+  right: -120%;
+  opacity: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(213, 213, 213);
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+}
+.header button {
+  background: transparent;
+  border: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.items {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.subTotal {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgb(213, 213, 213);
+  border-top: 1px solid rgb(213, 213, 213);
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonController {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.buttonController a {
+  text-align: center;
+  background: rgb(60, 128, 0);
+  transition: 0.3s ease-in;
+}
+.buttonController a:hover {
+  background: rgb(68, 68, 68);
+}
+
+@media screen and (max-width: 860px) {
+  .container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+}

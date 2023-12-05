@@ -1,11 +1,12 @@
 .sidebar {
-  height: 100vh;
-  width: 70vw;
+  height: auto;
+  width: 100vw;
   background: rgba(49, 103, 54, 0.863);
-  padding: 2rem;
   position: fixed;
-  top: 0;
-  left: -100%;
+  top: 6rem;
+  /* left: -100%; */
+  transform: scale(0);
+  transform-origin: top left;
   z-index: 10;
   opacity: 0;
   transition: 0.5s ease-in-out;
@@ -13,8 +14,9 @@
 }
 
 .sidebarActive {
-  left: 0;
+  /* left: 0; */
   opacity: 1;
+  transform: scale(1);
 }
 
 .sidebar h3 {
@@ -32,7 +34,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4rem 0 4rem 0;
+  padding: 2rem;
+  gap: 2rem;
+  font-size: 16px;
+}
+
+.sidebar ul a {
+  color: rgb(214, 214, 214);
+  transition: 0.1s;
+}
+
+.sidebar ul a:hover {
+  color: black;
 }
 
 .navControls {

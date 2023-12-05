@@ -8,8 +8,8 @@ const ShopPage = (props) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
-  const response = await fetch('http://localhost:3000/api/products');
+export const getStaticProps = async () => {
+  const response = await fetch('http://localhost:3000/api/products/products');
   const products = await response.json();
   return {
     props: { products },

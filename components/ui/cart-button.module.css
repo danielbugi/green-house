@@ -1,0 +1,30 @@
+.cartButton {
+  background: transparent;
+  border-color: transparent;
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.itemsNumber {
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: rgb(0, 220, 0);
+  font-size: 14px;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.cartButton:hover {
+  color: black;
+}

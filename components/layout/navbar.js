@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import classes from './navbar.module.css';
 
-import { FaShoppingBag, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { useSidebarContext } from '@/context/sidebar-context';
 import Link from 'next/link';
+import CartButton from '../ui/cart-button';
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
@@ -58,12 +59,7 @@ const Navbar = () => {
         </li>
 
         <li>
-          <a href="/">
-            <span>$0.00</span>
-            <span>
-              <FaShoppingBag />
-            </span>
-          </a>
+          <CartButton />
         </li>
         <li>
           <a href="/">

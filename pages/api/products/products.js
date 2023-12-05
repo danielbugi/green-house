@@ -5,7 +5,11 @@ const handler = async (req, res) => {
     const client = await connectDb();
     const db = client.db();
     try {
-      const productsCursor = await db.collection('products').find();
+      const productsCursor = await db
+        .collection('products')
+        .find()
+        .sort({ _id: -1 });
+
       const products = await productsCursor.toArray();
 
       res.status(200).json({

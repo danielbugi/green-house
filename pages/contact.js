@@ -1,9 +1,11 @@
-import Contact from '@/components/contact-page/contact';
+import Main from '@/components/contact-page/main';
+import MapSection from '@/components/contact-page/map-section';
 
 const ContactPage = () => {
   return (
     <>
-      <Contact />
+      <Main />
+      <MapSection />
     </>
   );
 };

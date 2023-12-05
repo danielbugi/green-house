@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  background: #e6eeea;
+  padding-top: 8rem;
+}
+
+.pageCenter {
+  max-width: 70vw;
+  margin: 0 auto;
+  background: #fff;
+  padding: 6rem;
+}
+
+@media screen and (max-width: 1275px) {
+  .pageCenter {
+    max-width: 90vw;
+    padding: 6rem 2rem;
+  }
+}
