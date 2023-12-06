@@ -5,19 +5,30 @@ import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import ProductCard from '../ui/product-card';
 
-const ShopGrid = (props) => {
+const ShopGrid = ({ products }) => {
+  if (!products) {
+    // Handle the case where products is null or undefined
+    return (
+      <section className={classes.container}>
+        <div className={classes.sectionCenter}>
+          <p>No products to display</p>
+        </div>
+      </section>
+    );
+  }
+
   const router = useRouter();
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 9;
   const pagesVisited = pageNumber * productsPerPage;
 
-  const { results, data } = props.products;
+  const { results, data } = products || {};
 
   const displayProducts = data
     .slice(pagesVisited, pagesVisited + productsPerPage)
     .map((product) => {
-      return <ProductCard product={product} />;
+      return <ProductCard product={product} key={product._id} />;
     });
 
   const pageCount = Math.ceil(data.length / productsPerPage);

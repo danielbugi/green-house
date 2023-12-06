@@ -2,8 +2,7 @@ import classes from './product-content.module.css';
 import ProductSection from './product-section';
 import RelatedProducts from '@/components/shop-page/related-products';
 
-const ProductContent = ({ props }) => {
-  const { product, relatedProducts } = props;
+const ProductContent = ({ product, relatedProducts }) => {
   return (
     <div className={classes.container}>
       <div className={classes.pageCenter}>

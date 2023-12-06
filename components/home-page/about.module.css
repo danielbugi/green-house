@@ -52,12 +52,12 @@
   .sectionCenter .content {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     margin-top: 4rem;
     padding: 0 1rem;
   }
   .ourStory a {
-    align-self: start;
+    align-self: flex-start;
   }
 
   .imgContainer {
