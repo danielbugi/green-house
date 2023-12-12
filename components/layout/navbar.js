@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import classes from './navbar.module.css';
 
 import { FaUser } from 'react-icons/fa';
@@ -7,40 +7,41 @@ import Link from 'next/link';
 import CartButton from '../ui/cart-button';
 
 const Navbar = () => {
-  const [scroll, setScroll] = useState(false);
+  // const [scroll, setScroll] = useState(false);
 
   const { sidebarOpen, setSidebarOpen } = useSidebarContext();
+  console.log(sidebarOpen);
 
-  useEffect(() => {
-    const handleScroll = (e) => {
-      const scrollTop = e.target.documentElement.scrollTop;
-      if (scrollTop > 50) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    };
-    if (document) {
-      document.addEventListener('scroll', handleScroll);
-    }
+  // useEffect(() => {
+  //   const handleScroll = (e) => {
+  //     const scrollTop = e.target.documentElement.scrollTop;
+  //     if (scrollTop > 50) {
+  //       setScroll(true);
+  //     } else {
+  //       setScroll(false);
+  //     }
+  //   };
+  //   if (document) {
+  //     document.addEventListener('scroll', handleScroll);
+  //   }
 
-    return () => {
-      if (document) {
-        document.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [scroll]);
+  //   return () => {
+  //     if (document) {
+  //       document.removeEventListener('scroll', handleScroll);
+  //     }
+  //   };
+  // }, [scroll]);
 
-  const navActiveClass = scroll
-    ? `${classes.navbar} ${classes.navActive}`
-    : `${classes.navbar}`;
+  // const navActiveClass = scroll
+  //   ? `${classes.navbar} ${classes.navActive}`
+  //   : `${classes.navbar}`;
 
   const hamburgerBtnClasses = sidebarOpen
     ? `${classes.hamburgerBtn} ${classes.open}`
     : `${classes.hamburgerBtn}`;
 
   return (
-    <nav className={navActiveClass}>
+    <nav className={classes.navbar}>
       <Link className="logo" href={'/'}>
         <h3>GreenHouse</h3>
       </Link>
@@ -67,6 +68,7 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
+
       <div
         className={hamburgerBtnClasses}
         onClick={() => setSidebarOpen(!sidebarOpen)}

@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import ProductCard from '../ui/product-card';
 
 const ShopGrid = ({ products }) => {
-  if (!products) {
+  if (!products || products.length < 1) {
     // Handle the case where products is null or undefined
     return (
       <section className={classes.container}>
@@ -21,17 +21,18 @@ const ShopGrid = ({ products }) => {
   const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 9;
+  const numOfItems = products.length;
   const pagesVisited = pageNumber * productsPerPage;
 
-  const { results, data } = products || {};
+  // const { results, data } = products || {};
 
-  const displayProducts = data
+  const displayProducts = products
     .slice(pagesVisited, pagesVisited + productsPerPage)
     .map((product) => {
-      return <ProductCard product={product} key={product._id} />;
+      return <ProductCard product={product} key={product.id} />;
     });
 
-  const pageCount = Math.ceil(data.length / productsPerPage);
+  const pageCount = Math.ceil(numOfItems / productsPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -41,7 +42,7 @@ const ShopGrid = ({ products }) => {
   };
 
   const startIndex = pageNumber * productsPerPage + 1;
-  const endIndex = Math.min((pageNumber + 1) * productsPerPage, data.length);
+  const endIndex = Math.min((pageNumber + 1) * productsPerPage, numOfItems);
 
   return (
     <section className={classes.container}>
@@ -54,7 +55,7 @@ const ShopGrid = ({ products }) => {
         </div>
         <div className={classes.gridController}>
           <p>
-            Showing {startIndex}-{endIndex} of {results} result
+            Showing {startIndex}-{endIndex} of {numOfItems} result
           </p>
           <select name="sort" id="">
             <option value="default">Default sorting</option>

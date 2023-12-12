@@ -4,29 +4,20 @@ import classes from './sidebar.module.css';
 import { FaShoppingBag, FaUser } from 'react-icons/fa';
 import Link from 'next/link';
 import CartButton from '../ui/cart-button';
+import { useEffect, useRef } from 'react';
 
 const Sidebar = () => {
-  const { sidebarOpen } = useSidebarContext();
+  const { sidebarOpen, setSidebarOpen } = useSidebarContext();
 
   const sidebarClasses = sidebarOpen
     ? `${classes.sidebar} ${classes.sidebarActive}`
     : `${classes.sidebar}`;
 
   return (
-    <aside className={sidebarClasses}>
-      {/* <Link className="logo" href={'/'}>
-        <h3>GreenHouse</h3>
-      </Link> */}
-
+    <aside className={sidebarClasses} onClick={() => setSidebarOpen(false)}>
       <ul>
         <div className={classes.navControls}>
           <li>
-            {/* <a href="/">
-              <span>$0.00</span>
-              <span>
-                <FaShoppingBag />
-              </span>
-            </a> */}
             <CartButton />
           </li>
           <li>
