@@ -1,4 +1,5 @@
 import ProductContent from '@/components/shop-page/product-content';
+import { connectDb } from '@/lib/db';
 
 const SingleProductPage = ({ product, relatedProducts }) => {
   return (
@@ -8,35 +9,72 @@ const SingleProductPage = ({ product, relatedProducts }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const { params } = context;
   const { slug } = params;
-  const productResponse = await fetch(
-    `http://localhost:3000/api/products/${slug}`
+
+  const client = await connectDb();
+  const db = client.db();
+
+  const formattedSlug = slug.split('-').join(' ');
+  const product = await db
+    .collection('products')
+    .findOne({ name: formattedSlug });
+
+  const totalDocuments = await db.collection('products').countDocuments();
+  const randomIndices = Array.from({ length: 3 }, () =>
+    Math.floor(Math.random() * totalDocuments)
   );
-  const product = await productResponse.json();
-  const relatedResponse = await fetch(
-    'http://localhost:3000/api/products/related-products'
+  const relatedProducts = await Promise.all(
+    randomIndices.map(async (index) => {
+      return await db.collection('products').findOne({}, { skip: index });
+    })
   );
-  const relatedProducts = await relatedResponse.json();
+
+  client.close();
 
   return {
     props: {
-      product,
-      relatedProducts,
+      product: {
+        name: product.name,
+        id: product._id.toString(),
+        category: product.category,
+        img: product.img,
+        price: product.price,
+        info: product.info,
+        inStock: product.inStock,
+        featured: product.featured,
+        freeShipping: product.freeShipping,
+      },
+      relatedProducts: relatedProducts.map((product) => ({
+        name: product.name,
+        id: product._id.toString(),
+        category: product.category,
+        img: product.img,
+        price: product.price,
+        info: product.info,
+        inStock: product.inStock,
+        featured: product.featured,
+        freeShipping: product.freeShipping,
+      })),
     },
   };
 };
 
-// export const getStaticPaths = async () => {
-//   const response = await fetch('http://localhost:3000/api/products/products');
-//   const products = await response.json();
-//   const productNames = products.data.map((item) => item.name);
-//   const slugs = productNames.map((name) => name.split(' ').join('-'));
-//   return {
-//     paths: slugs.map((slug) => ({ params: { slug: slug } })),
-//     fallback: false, // false if our path get all supported parameters value, true for if we got some of them, then it will try generate in server a page for the request.
-//   };
-// };
+export const getStaticPaths = async () => {
+  const client = await connectDb();
+  const db = client.db();
+  const featuredProducts = await db
+    .collection('products')
+    .find({ featured: true })
+    .toArray();
+
+  client.close();
+
+  return {
+    fallback: true,
+    paths: featuredProducts.map((slug) => ({ params: { slug: slug.name } })),
+  };
+};
 
 export default SingleProductPage;

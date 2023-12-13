@@ -3,17 +3,20 @@
   top: 0;
   left: 0;
   width: 100vw;
+  height: 4.5rem;
   z-index: 10;
   padding: 1.5rem 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: 0.3s ease-in-out;
-  background: rgba(49, 103, 54, 0.863);
+  background: rgb(49, 103, 54);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.navActive {
-  background: rgba(49, 103, 54, 0.863);
+.navHidden {
+  transform: translateY(calc(-1 * 4.5rem));
+  box-shadow: none;
 }
 
 .navbar ul {

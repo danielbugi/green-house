@@ -1,5 +1,4 @@
 import ShopGrid from '@/components/shop-page/shop-grid';
-import { getAllProducts } from '@/lib/data';
 import { connectDb } from '@/lib/db';
 
 const ShopPage = ({ products }) => {
@@ -12,7 +11,7 @@ const ShopPage = ({ products }) => {
 
 export const getStaticProps = async () => {
   const client = await connectDb();
-  const db = await client.db();
+  const db = client.db();
   const products = await db
     .collection('products')
     .find()

@@ -1,15 +1,14 @@
 import ProductCard from '../ui/product-card';
 import classes from './related-products.module.css';
 
-const RelatedProducts = (props) => {
-  const { products } = props;
+const RelatedProducts = ({ products }) => {
   return (
     <div className={classes.container}>
       <h2>Related Products</h2>
 
       <div className={classes.wrapper}>
         {products.map((product) => {
-          return <ProductCard product={product} key={product._id} />;
+          return <ProductCard key={product.id} product={product} />;
         })}
       </div>
     </div>

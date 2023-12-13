@@ -1,27 +1,27 @@
 import Image from 'next/image';
 import classes from './cart-item.module.css';
 import { LiaTimesCircleSolid } from 'react-icons/lia';
+import { useCartContext } from '@/context/cart-context';
 
-const CartItem = () => {
+const CartItem = ({ productItem }) => {
+  const { amount, price, image, name, id } = productItem;
+
+  const { removeItem } = useCartContext();
+
   return (
     <li className={classes.cartItem}>
       <div>
-        <Image
-          src={'/products/featured-img-1.jpg'}
-          alt="item"
-          height={'70'}
-          width={'70'}
-        />
+        <Image src={image} alt={name} height={'100'} width={'80'} />
       </div>
       <div className={classes.info}>
-        <p className={classes.itemName}>item name</p>
+        <p className={classes.itemName}>{name}</p>
         <p className={classes.itemsAmount}>
-          <span>1</span>
+          <span>{amount}</span>
           <span>x</span>
-          <span>$284.90</span>
+          <span>${price}</span>
         </p>
 
-        <div className={classes.removeItem}>
+        <div className={classes.removeItem} onClick={() => removeItem(id)}>
           <LiaTimesCircleSolid />
         </div>
       </div>

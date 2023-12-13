@@ -1,13 +1,13 @@
-import Image from 'next/image';
 import classes from './cart.module.css';
 import { LiaTimesSolid } from 'react-icons/lia';
 import CartItem from './cart-item';
-import Link from 'next/link';
 import Button from '@/components/ui/button';
 import { useSidebarContext } from '@/context/sidebar-context';
+import { useCartContext } from '@/context/cart-context';
 
 const Cart = () => {
   const { setCartShown, cartShown } = useSidebarContext();
+  const { cart, total_amount } = useCartContext();
 
   return (
     <>
@@ -17,6 +17,7 @@ const Cart = () => {
         }`}
         onClick={() => setCartShown(false)}
       ></div>
+
       <div className={`${classes.container} ${!cartShown ? classes.hide : ''}`}>
         <div className={classes.header}>
           <p>Shopping Cart</p>
@@ -24,25 +25,55 @@ const Cart = () => {
             <LiaTimesSolid />
           </button>
         </div>
-        <ul className={classes.items}>
-          <CartItem />
-        </ul>
-        <div className={classes.subTotal}>
-          <p>Subtotal:</p>
-          <p>$284.90</p>
-        </div>
-        <div className={classes.buttonController}>
-          <Button
-            title={'View Cart'}
-            customButtonClass={'btnGreen'}
-            link={'/'}
-          />
-          <Button
-            title={'Check Out'}
-            customButtonClass={'btnGreen'}
-            link={'/'}
-          />
-        </div>
+
+        {cart.length < 1 ? (
+          <>
+            <div className={classes.noItems}>
+              <p>No products in the cart.</p>
+            </div>
+
+            <div className={classes.buttonController}>
+              <div
+                onClick={() => {
+                  setCartShown(false);
+                }}
+                style={{ background: 'blue' }}
+              >
+                <Button
+                  title={'Continue Shopping'}
+                  customButtonClass={'btnGreen'}
+                  link={'/shop'}
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <ul className={classes.items}>
+              {cart.map((productItem) => {
+                return (
+                  <CartItem productItem={productItem} key={productItem.id} />
+                );
+              })}
+            </ul>
+            <div className={classes.subTotal}>
+              <p>Subtotal:</p>
+              <p>${total_amount}</p>
+            </div>
+            <div className={classes.buttonController}>
+              <Button
+                title={'View Cart'}
+                customButtonClass={'btnGreen'}
+                link={'/'}
+              />
+              <Button
+                title={'Check Out'}
+                customButtonClass={'btnGreen'}
+                link={'/'}
+              />
+            </div>
+          </>
+        )}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './navbar.module.css';
 
 import { FaUser } from 'react-icons/fa';
@@ -7,41 +7,35 @@ import Link from 'next/link';
 import CartButton from '../ui/cart-button';
 
 const Navbar = () => {
-  // const [scroll, setScroll] = useState(false);
-
   const { sidebarOpen, setSidebarOpen } = useSidebarContext();
-  console.log(sidebarOpen);
 
-  // useEffect(() => {
-  //   const handleScroll = (e) => {
-  //     const scrollTop = e.target.documentElement.scrollTop;
-  //     if (scrollTop > 50) {
-  //       setScroll(true);
-  //     } else {
-  //       setScroll(false);
-  //     }
-  //   };
-  //   if (document) {
-  //     document.addEventListener('scroll', handleScroll);
-  //   }
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visibleNav, setVisibleNav] = useState(true);
 
-  //   return () => {
-  //     if (document) {
-  //       document.removeEventListener('scroll', handleScroll);
-  //     }
-  //   };
-  // }, [scroll]);
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
 
-  // const navActiveClass = scroll
-  //   ? `${classes.navbar} ${classes.navActive}`
-  //   : `${classes.navbar}`;
+    setVisibleNav(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos, visibleNav]);
+
+  const navActiveClass = !visibleNav
+    ? `${classes.navbar} ${classes.navHidden}`
+    : `${classes.navbar}`;
 
   const hamburgerBtnClasses = sidebarOpen
     ? `${classes.hamburgerBtn} ${classes.open}`
     : `${classes.hamburgerBtn}`;
 
   return (
-    <nav className={classes.navbar}>
+    <nav className={navActiveClass}>
       <Link className="logo" href={'/'}>
         <h3>GreenHouse</h3>
       </Link>

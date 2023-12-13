@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   transition: 0.5s ease-in-out;
-  padding-bottom: 6rem;
 }
 
 .container.hide {
@@ -51,6 +50,15 @@
 .items {
   padding: 1.5rem;
   flex: 1;
+  overflow-y: scroll;
+}
+
+.noItems {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .subTotal {
@@ -72,6 +80,7 @@
   text-align: center;
   background: rgb(60, 128, 0);
   transition: 0.3s ease-in;
+  width: 100%;
 }
 .buttonController a:hover {
   background: rgb(68, 68, 68);
@@ -80,6 +89,7 @@
 @media screen and (max-width: 860px) {
   .container {
     width: 80%;
+    padding-bottom: 10rem;
   }
 }
 @media screen and (max-width: 500px) {

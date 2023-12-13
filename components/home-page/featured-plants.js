@@ -3,7 +3,7 @@ import Button from '../ui/button';
 import ProductCard from '../ui/product-card';
 import classes from './featured-plants.module.css';
 
-const FeaturedPlants = () => {
+const FeaturedPlants = ({ featured }) => {
   return (
     <section className={classes.container}>
       <div className={classes.sectionCenter}>
@@ -16,8 +16,8 @@ const FeaturedPlants = () => {
           />
         </div>
         <div className={classes.newPlants}>
-          {FeaturedProducts.map((product) => {
-            return <ProductCard key={product.name} product={product} />;
+          {featured.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
           })}
         </div>
       </div>
