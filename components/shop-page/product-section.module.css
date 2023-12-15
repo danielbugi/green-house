@@ -80,14 +80,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .productControl form {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .productControl form input {
-    width: 100%;
-  }
-
   .productControl form button {
     padding: 0.6rem;
   }

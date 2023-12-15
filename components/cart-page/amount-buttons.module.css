@@ -1,0 +1,29 @@
+.amountBtns {
+  display: grid;
+  /* width: 140px; */
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgb(212, 212, 212);
+}
+.amount {
+  margin-bottom: 0;
+}
+.amountBtn {
+  background: rgb(212, 212, 212);
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 10px;
+  /* padding: 1rem 0; */
+  width: 1.5rem;
+  /* height: 1rem; */
+  color: rgb(86, 86, 86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amountBtn:hover {
+  background: rgb(163, 163, 163);
+}

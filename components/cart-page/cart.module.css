@@ -1,0 +1,14 @@
+.container {
+  width: 100vw;
+  background: #e6eeea;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+}
+
+.pageCenter {
+  max-width: 70vw;
+  min-height: 80vh;
+  margin: 0 auto;
+  background: #fff;
+  padding: 6rem;
+}

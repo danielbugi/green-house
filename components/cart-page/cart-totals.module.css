@@ -1,0 +1,46 @@
+.container {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cartTotals {
+  border: 1px solid rgb(225, 225, 225);
+}
+
+.header {
+  border-bottom: 1px solid rgb(225, 225, 225);
+  background: rgb(244, 243, 243);
+  padding: 1rem;
+}
+
+.header h6 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.body {
+  padding: 1rem;
+}
+
+.totalsRow {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgb(225, 225, 225);
+}
+
+.link {
+  background: #0b9322;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  transition: 0.3s ease;
+}
+
+.link:hover {
+  background-color: grey;
+}

@@ -1,0 +1,37 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem;
+}
+.imageCon {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.removeItem {
+  cursor: pointer;
+}
+.removeItem svg {
+  font-size: 25px;
+  color: rgb(161, 161, 161);
+  transition: 0.5s;
+}
+
+.removeItem svg:hover {
+  color: black;
+}
+
+.itemsAmount {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: rgb(115, 115, 115);
+}
+
+.itemsAmount span:nth-of-type(2) {
+  font-size: 12px;
+}

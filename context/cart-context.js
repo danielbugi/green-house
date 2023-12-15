@@ -1,4 +1,10 @@
-const { createContext, useContext, useReducer, useEffect } = require('react');
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from 'react';
 
 import {
   ADD_TO_CART,
@@ -8,12 +14,20 @@ import {
   TOGGLE_CART_ITEM_AMOUNT,
 } from '@/lib/actions';
 
+import Cookies from 'js-cookie';
+
 import reducer from '../reducers/cart_reducer';
 
 const CartContext = createContext();
 
+const getCookieCart = () => {
+  let cart = Cookies.get('cart');
+  return cart ? JSON.parse(cart) : [];
+};
+
 const initialState = {
-  cart: [],
+  cart: getCookieCart(),
+
   total_items: 0,
   total_amount: 0,
   shipping_fee: 0,
@@ -21,6 +35,7 @@ const initialState = {
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [domLoaded, setDomLoaded] = useState(false);
 
   const addToCart = (id, amount, product) => {
     dispatch({ type: ADD_TO_CART, payload: { id, amount, product } });
@@ -41,10 +56,15 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: COUNT_CART_TOTALS });
+    setDomLoaded(true);
+    // localStorage.setItem('cart', JSON.stringify(state.cart));
+    Cookies.set('cart', JSON.stringify(state.cart), { expires: 7 });
   }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ ...state, addToCart, removeItem }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, removeItem, toggleAmount, domLoaded }}
+    >
       {children}
     </CartContext.Provider>
   );

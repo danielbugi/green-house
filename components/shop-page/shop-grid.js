@@ -7,7 +7,6 @@ import ProductCard from '../ui/product-card';
 
 const ShopGrid = ({ products }) => {
   if (!products || products.length < 1) {
-    // Handle the case where products is null or undefined
     return (
       <section className={classes.container}>
         <div className={classes.sectionCenter}>

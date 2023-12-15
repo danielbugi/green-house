@@ -15,11 +15,11 @@ const CartItem = ({ productItem }) => {
       </div>
       <div className={classes.info}>
         <p className={classes.itemName}>{name}</p>
-        <p className={classes.itemsAmount}>
+        <div className={classes.itemsAmount}>
           <span>{amount}</span>
           <span>x</span>
           <span>${price}</span>
-        </p>
+        </div>
 
         <div className={classes.removeItem} onClick={() => removeItem(id)}>
           <LiaTimesCircleSolid />

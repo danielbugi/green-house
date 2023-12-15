@@ -1,0 +1,37 @@
+.items {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: scroll;
+}
+.noItems {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subTotal {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgb(213, 213, 213);
+  border-top: 1px solid rgb(213, 213, 213);
+  display: flex;
+  justify-content: space-between;
+}
+.buttonController {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.buttonController a {
+  text-align: center;
+  background: rgb(60, 128, 0);
+  color: white;
+  padding: 0.8rem;
+  transition: 0.3s ease-in;
+  width: 100%;
+}
+.buttonController a:hover {
+  background: rgb(68, 68, 68);
+}
