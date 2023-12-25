@@ -10,14 +10,19 @@ import { Elements } from '@stripe/react-stripe-js';
 import classes from './checkout.module.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Loader from '../ui/loader';
 
 const Checkout = () => {
+  const [loading, setLoading] = useState(true);
+
   const { cart, total_amount } = useCartContext();
 
   const amount = total_amount.toFixed(2) * 1;
 
   // console.log(cart);
   const [clientSecret, setClientSecret] = useState('');
+
+  console.log(clientSecret);
 
   const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
@@ -32,12 +37,19 @@ const Checkout = () => {
 
       setClientSecret(data.clientSecret);
     } catch (err) {
-      console.log(err.response);
+      console.log(err);
     }
   };
 
   useEffect(() => {
-    createPaymentIntent();
+    if (total_amount == 0) {
+      setLoading(true);
+    }
+    if (amount > 0) {
+      createPaymentIntent();
+      setLoading(false);
+    }
+
     // Create PaymentIntent as soon as the page loads
   }, [total_amount]);
 
@@ -54,10 +66,14 @@ const Checkout = () => {
       <div className={classes.divider}></div>
       <div className={classes.center}>
         <div className={classes.payment_container}>
-          {clientSecret && (
-            <Elements stripe={stripePromise} options={options}>
-              <CheckoutForm cart={cart} amount={amount} />
-            </Elements>
+          {loading ? (
+            <Loader />
+          ) : (
+            clientSecret && (
+              <Elements stripe={stripePromise} options={options}>
+                <CheckoutForm cart={cart} amount={amount} />
+              </Elements>
+            )
           )}
         </div>
 

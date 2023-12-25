@@ -3,7 +3,6 @@ import Image from 'next/image';
 import classes from './cart.module.css';
 
 const CartConfirm = ({ item }) => {
-  console.log(item);
   return (
     <div className={classes.container}>
       <div className={classes.f_row}>
