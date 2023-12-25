@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex: 1;
 }
 
 .removeItem {
@@ -34,4 +35,29 @@
 
 .itemsAmount span:nth-of-type(2) {
   font-size: 12px;
+}
+
+.name_and_price {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.amount_btn_con {
+  flex: 1;
+  margin-left: 2rem;
+}
+.subtotal {
+  flex: 1;
+}
+
+@media screen and (max-width: 740px) {
+  .name_and_price {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .subtotal {
+    display: none;
+  }
 }

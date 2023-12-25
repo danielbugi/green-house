@@ -12,3 +12,9 @@
   background: #fff;
   padding: 6rem;
 }
+
+@media screen and (max-width: 950px) {
+  .pageCenter {
+    max-width: 90vw;
+  }
+}

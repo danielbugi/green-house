@@ -1,0 +1,83 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.billing_grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.email,
+.billing {
+  width: 100%;
+}
+.form h6 {
+  margin-bottom: 2rem;
+}
+
+.formControl {
+  display: flex;
+  gap: 1rem;
+}
+
+.formControl > input {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid rgb(223, 223, 223);
+}
+
+.formControl > select {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid rgb(223, 223, 223);
+  font-size: 18px;
+}
+
+.cart {
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 5px;
+}
+
+.t_head {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.t_row_totals {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid rgb(223, 223, 223);
+}
+
+/* Payment submit */
+
+.submit_btn {
+  padding: 1rem;
+  margin-top: 1rem;
+  background: rgb(81, 89, 252);
+  border: transparent;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submit_btn:hover {
+  background: rgb(43, 48, 159);
+}

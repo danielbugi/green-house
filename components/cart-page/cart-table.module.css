@@ -32,3 +32,13 @@
 .cartItems {
   padding: 1rem;
 }
+
+@media screen and (max-width: 740px) {
+  .head {
+    display: none;
+  }
+
+  .table {
+    border: none;
+  }
+}

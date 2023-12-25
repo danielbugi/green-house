@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: grey;
+}
+
+.f_row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.img_container {
+  height: 100px;
+  width: 80px;
+  overflow: hidden;
+}
+
+.img_container img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}

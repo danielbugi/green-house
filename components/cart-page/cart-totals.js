@@ -24,6 +24,9 @@ const CartTotals = () => {
           <Link href="/shop/checkout" className={classes.link}>
             BUY NOW
           </Link>
+          <Link href="/shop" className={classes.link}>
+            CONTINUE SHOPPING
+          </Link>
         </div>
       </div>
     </div>
